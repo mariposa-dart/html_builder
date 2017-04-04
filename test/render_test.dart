@@ -6,8 +6,7 @@ import 'package:test/test.dart';
 main() {
   test('pretty', () {
     var $dom = h('html', {
-      'lang': 'en',
-      'wtf': 'ok'
+      'lang': 'en'
     }, [
       h('head', {}, [
         h('title', {}, [text('Hello, world!')])
