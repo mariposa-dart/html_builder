@@ -81,7 +81,7 @@ Node area(
         style,
         Map<String, dynamic> props: const {},
         Iterable<Node> children: const []}) =>
-    h(
+    new SelfClosingNode(
         'area',
         _apply(props, {
           'alt': alt,
@@ -98,8 +98,7 @@ Node area(
           'id': id,
           'class': className,
           'style': style
-        }),
-        children ?? []);
+        }));
 
 Node article(
         {className,
@@ -162,7 +161,7 @@ Node base(
         style,
         Map<String, dynamic> props: const {},
         Iterable<Node> children: const []}) =>
-    h(
+    new SelfClosingNode(
         'base',
         _apply(props, {
           'href': href,
@@ -170,8 +169,7 @@ Node base(
           'id': id,
           'class': className,
           'style': style
-        }),
-        children ?? []);
+        }));
 
 Node bdi(
         {String id,
@@ -450,7 +448,7 @@ Node embed(
         style,
         Map<String, dynamic> props: const {},
         Iterable<Node> children: const []}) =>
-    h(
+    new SelfClosingNode(
         'embed',
         _apply(props, {
           'height': height,
@@ -460,8 +458,7 @@ Node embed(
           'id': id,
           'class': className,
           'style': style
-        }),
-        children ?? []);
+        }));
 
 Node fieldset(
         {bool disabled,
@@ -662,7 +659,7 @@ Node iframe(
         style,
         Map<String, dynamic> props: const {},
         Iterable<Node> children: const []}) =>
-    h(
+    new SelfClosingNode(
         'iframe',
         _apply(props, {
           'height': height,
@@ -674,8 +671,7 @@ Node iframe(
           'id': id,
           'class': className,
           'style': style
-        }),
-        children ?? []);
+        }));
 
 Node img(
         {String alt,
@@ -693,7 +689,7 @@ Node img(
         style,
         Map<String, dynamic> props: const {},
         Iterable<Node> children: const []}) =>
-    h(
+    new SelfClosingNode(
         'img',
         _apply(props, {
           'alt': alt,
@@ -709,8 +705,7 @@ Node img(
           'id': id,
           'class': className,
           'style': style
-        }),
-        children ?? []);
+        }));
 
 Node input(
         {String accept,
@@ -748,7 +743,7 @@ Node input(
         style,
         Map<String, dynamic> props: const {},
         Iterable<Node> children: const []}) =>
-    h(
+    new SelfClosingNode(
         'input',
         _apply(props, {
           'accept': accept,
@@ -785,8 +780,7 @@ Node input(
           'id': id,
           'class': className,
           'style': style
-        }),
-        children ?? []);
+        }));
 
 Node ins(
         {String cite,
@@ -1005,7 +999,7 @@ Node meta(
         style,
         Map<String, dynamic> props: const {},
         Iterable<Node> children: const []}) =>
-    h(
+    new SelfClosingNode(
         'meta',
         _apply(props, {
           'charset': charset,
@@ -1015,8 +1009,7 @@ Node meta(
           'id': id,
           'class': className,
           'style': style
-        }),
-        children ?? []);
+        }));
 
 Node nav(
         {String id,
@@ -1166,7 +1159,7 @@ Node param(
         style,
         Map<String, dynamic> props: const {},
         Iterable<Node> children: const []}) =>
-    h(
+    new SelfClosingNode(
         'param',
         _apply(props, {
           'name': name,
@@ -1174,8 +1167,7 @@ Node param(
           'id': id,
           'class': className,
           'style': style
-        }),
-        children ?? []);
+        }));
 
 Node picture(
         {String id,
@@ -1353,7 +1345,7 @@ Node source(
         style,
         Map<String, dynamic> props: const {},
         Iterable<Node> children: const []}) =>
-    h(
+    new SelfClosingNode(
         'source',
         _apply(props, {
           'src': src,
@@ -1364,8 +1356,7 @@ Node source(
           'id': id,
           'class': className,
           'style': style
-        }),
-        children ?? []);
+        }));
 
 Node span(
         {String id,
@@ -1602,7 +1593,7 @@ Node track(
         style,
         Map<String, dynamic> props: const {},
         Iterable<Node> children: const []}) =>
-    h(
+    new SelfClosingNode(
         'track',
         _apply(props, {
           'default': default_,
@@ -1613,8 +1604,7 @@ Node track(
           'id': id,
           'class': className,
           'style': style
-        }),
-        children ?? []);
+        }));
 
 Node u(
         {String id,
