@@ -94,7 +94,7 @@ class _StringRendererImpl implements StringRenderer {
       });
 
       if (node is SelfClosingNode) {
-        buf.write('/>');
+        buf.write((html5 != false) ? '>' : '/>');
       } else {
         buf.write('>');
         node.children.forEach((child) => _renderInto(child, buf));
@@ -151,7 +151,7 @@ class _PrettyStringRendererImpl implements StringRenderer {
       });
 
       if (node is SelfClosingNode) {
-        buf.write('/>');
+        buf.write((html5 != false) ? '>' : '/>');
       } else {
         buf.write('>');
         node.children.forEach((child) => _renderInto(tabs + 1, child, buf));
