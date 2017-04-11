@@ -15,6 +15,11 @@ class Node {
       List<Node> children = const []]) {
     this..attributes.addAll(attributes ?? {})..children.addAll(children ?? []);
   }
+
+  Node._selfClosing(this.tagName,
+      [Map<String, dynamic> attributes = const {}]) {
+    this..attributes.addAll(attributes ?? {});
+  }
 }
 
 /// Represents a self-closing tag, i.e. `<br>`.
@@ -26,7 +31,7 @@ class SelfClosingNode extends Node {
   List<Node> get children => new List<Node>.unmodifiable([]);
 
   SelfClosingNode(this.tagName, [Map<String, dynamic> attributes = const {}])
-      : super(tagName, attributes);
+      : super._selfClosing(tagName, attributes);
 }
 
 /// Represents a text node.
