@@ -39,7 +39,7 @@ main() {
         'does-not-appear': false
     });
 
-    // Style can be either a String or Map.
+    // Or, a String or Map.
     h('foo', {
         'style': 'background-color: white; color: red;'
     });
@@ -51,7 +51,7 @@ main() {
         }
     });
 
-    // Class can be either a String or Iterable.
+    // Or, a String or Iterable.
     h('foo', {
         'class': 'a b'
     });
@@ -67,15 +67,15 @@ Standard HTML5 elements:
 import 'package:html_builder/elements.dart';
 
 main() {
-    var $dom = html([
-        head([
+    var $dom = html(lang: 'en', children: [
+        head(children: [
             title('Hello, world!')
         ]),
-        body([
+        body(children: [
             h1('Hello, world!'),
             p([text('Ok')])
         ])
-    ], lang: 'en');
+    ]);
 }
 ```
 
@@ -94,12 +94,12 @@ import 'package:html_builder/elements.dart';
 configureViews(Angel app) async {
     app.get('/foo', (req, res) async {
         var foo = await app.service('foo').read(req.params['id']);
-        var $dom = html([
-            head([
+        var $dom = html(children: [
+            head(children: [
                 title(foo.name)
             ]),
-            body([
-                h1([text(foo.name)])
+            body(children: [
+                h1(children: [text(foo.name)])
             ])
         ]);
 

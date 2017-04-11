@@ -79,14 +79,14 @@ class _StringRendererImpl implements StringRenderer {
           buf.write(' $k');
         } else if (v == false || v == null) {
           // Ignore
-        } else if (k == 'class' && v is Iterable) {
+        } else if (v is Iterable) {
           var val = v.join(' ').replaceAll('"', '\\"');
           buf.write(' $k="$val"');
-        } else if (k == 'style' && v is Map) {
+        } else if (v is Map) {
           var val = v.keys
               .fold<String>('', (out, k) => out += '$k: ${v[k]};')
               .replaceAll('"', '\\"');
-          buf.write(' style="$val"');
+          buf.write(' $k="$val"');
         } else {
           var val = v.toString().replaceAll('"', '\\"');
           buf.write(' $k="$val"');
@@ -136,14 +136,14 @@ class _PrettyStringRendererImpl implements StringRenderer {
           buf.write(' $k');
         } else if (v == false || v == null) {
           // Ignore
-        } else if (k == 'class' && v is Iterable) {
+        } else if (v is Iterable) {
           var val = v.join(' ').replaceAll('"', '\\"');
           buf.write(' $k="$val"');
-        } else if (k == 'style' && v is Map) {
+        } else if (v is Map) {
           var val = v.keys
               .fold<String>('', (out, k) => out += '$k: ${v[k]};')
               .replaceAll('"', '\\"');
-          buf.write(' style="$val"');
+          buf.write(' $k="$val"');
         } else {
           var val = v.toString().replaceAll('"', '\\"');
           buf.write(' $k="$val"');
