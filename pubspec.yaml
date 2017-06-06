@@ -1,6 +1,6 @@
 name: html_builder
 description: Build HTML AST's and render them to HTML.
-version: 1.0.0+1
+version: 1.0.1
 author: Tobe O <thosakwe@gmail.com>
 homepage: https://github.com/thosakwe/html_builder
 environment:
