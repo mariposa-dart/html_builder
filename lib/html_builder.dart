@@ -1,7 +1,7 @@
 /// Shorthand function to generate a new [Node].
 Node h(String tagName,
         [Map<String, dynamic> attributes = const {},
-        List<Node> children = const []]) =>
+        Iterable<Node> children = const []]) =>
     new Node(tagName, attributes, children);
 
 /// Represents an HTML node.
@@ -12,7 +12,7 @@ class Node {
 
   Node(this.tagName,
       [Map<String, dynamic> attributes = const {},
-      List<Node> children = const []]) {
+      Iterable<Node> children = const []]) {
     this..attributes.addAll(attributes ?? {})..children.addAll(children ?? []);
   }
 
