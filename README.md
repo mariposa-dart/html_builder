@@ -18,7 +18,7 @@ dependencies:
 ```dart
 import 'package:html_builder/html_builder.dart';
 
-dmain() {
+main() {
     // Akin to React.createElement(...);
     var $el = h('my-element', p: {}, c: []);
 
@@ -84,7 +84,8 @@ Rendering to HTML:
 String html = new StringRenderer().render($dom);
 ```
 
-Example with the [Angel](https://github.com/angel-dart/angel) server-side framework:
+Example with the [Angel](https://github.com/angel-dart/angel) server-side framework,
+which has [dedicated html_builder support](https://github.com/angel-dart/html):
 
 ```dart
 import 'dart:io';
@@ -94,7 +95,7 @@ import 'package:html_builder/elements.dart';
 configureViews(Angel app) async {
     app.get('/foo/:id', (req, res) async {
         var foo = await app.service('foo').read(req.params['id']);
-        var $dom = html(c: [
+        return html(c: [
             head(c: [
                 title(c: [text(foo.name)])
             ]),
@@ -102,11 +103,6 @@ configureViews(Angel app) async {
                 h1(c: [text(foo.name)])
             ])
         ]);
-
-        res
-          ..contentType = ContentType.HTML
-          ..write(new StringRenderer().render($dom))
-          ..end();
     });
 }
 ```
