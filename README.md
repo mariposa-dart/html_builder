@@ -18,45 +18,45 @@ dependencies:
 ```dart
 import 'package:html_builder/html_builder.dart';
 
-main() {
+dmain() {
     // Akin to React.createElement(...);
-    var $el = h('my-element', {}, []);
+    var $el = h('my-element', p: {}, c: []);
 
 
     // Attributes can be plain Strings.
-    h('foo', {
+    h('foo', p: {
         'bar': 'baz'
     });
 
-    // Null attributes do not appear.
-    h('foo', {
+i    // Null attributes do not appear.
+    h('foo', p: {
         'does-not-appear': null
     });
 
     // If an attribute is a bool, then it will only appear if its value is true.
-    h('foo', {
+    h('foo', p: {
         'appears': true,
         'does-not-appear': false
     });
-
+:
     // Or, a String or Map.
-    h('foo', {
+    h('foo', p: {
         'style': 'background-color: white; color: red;'
     });
 
-    h('foo', {
+    h('foo', p: {
         'style': {
             'background-color': 'white',
             'color': 'red'
-        }
+/        }
     });
 
     // Or, a String or Iterable.
-    h('foo', {
+    h('foo', p: {
         'class': 'a b'
     });
 
-    h('foo', {
+    h('foo', p: {
         'class': ['a', 'b']
     });
 }
@@ -67,13 +67,13 @@ Standard HTML5 elements:
 import 'package:html_builder/elements.dart';
 
 main() {
-    var $dom = html(lang: 'en', children: [
-        head(children: [
-            title('Hello, world!')
+    var $dom = html(lang: 'en', c: [
+        head(c: [
+            title(c: [text('Hello, world!')])
         ]),
-        body(children: [
-            h1('Hello, world!'),
-            p([text('Ok')])
+        body(c: [
+            h1(c: [text('Hello, world!')]),
+            p(c: [text('Ok')])
         ])
     ]);
 }
@@ -92,14 +92,14 @@ import 'package:angel_framework/angel_framework.dart';
 import 'package:html_builder/elements.dart';
 
 configureViews(Angel app) async {
-    app.get('/foo', (req, res) async {
+    app.get('/foo/:id', (req, res) async {
         var foo = await app.service('foo').read(req.params['id']);
-        var $dom = html(children: [
-            head(children: [
-                title(foo.name)
+        var $dom = html(c: [
+            head(c: [
+                title(c: [text(foo.name)])
             ]),
-            body(children: [
-                h1(children: [text(foo.name)])
+            body(c: [
+                h1(c: [text(foo.name)])
             ])
         ]);
 
