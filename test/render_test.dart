@@ -5,18 +5,22 @@ import 'package:test/test.dart';
 
 main() {
   test('pretty', () {
-    var $dom = html(lang: 'en', children: [
-      head(children: [
-        title(children: [text('Hello, world!')])
-      ]),
-      body(props: {
-        'unresolved': true
-      }, children: [
-        h1(children: [text('Hello, world!')]),
-        br(),
-        hr()
-      ])
-    ]);
+    var $dom = html(
+      lang: 'en',
+      c: [
+        head(c: [
+          title(c: [text('Hello, world!')])
+        ]),
+        body(
+          p: {'unresolved': true},
+          c: [
+            h1(c: [text('Hello, world!')]),
+            br(),
+            hr(),
+          ],
+        )
+      ],
+    );
 
     var rendered = new StringRenderer().render($dom);
     print(rendered);

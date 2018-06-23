@@ -20,7 +20,7 @@ Map<String, dynamic> _apply(Iterable<Map<String, dynamic>> props,
     map.addAll(p ?? {});
   }
 
-  return map;
+  return map.cast<String, dynamic>();
 }
 
 Node text(String text) => new TextNode(text);
