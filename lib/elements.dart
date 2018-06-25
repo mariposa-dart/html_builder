@@ -2,6 +2,7 @@
 library html_builder.elements;
 
 import 'html_builder.dart';
+export 'html_builder.dart';
 
 Map<String, dynamic> _apply(Iterable<Map<String, dynamic>> props,
     [Map<String, dynamic> attrs]) {

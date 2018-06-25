@@ -1,3 +1,6 @@
+# 1.0.4
+* Added `rebuild`, `rebuildRecursive`, and `NodeBuilder`.
+
 # 1.0.3
 * Dart 2 ready!
 
