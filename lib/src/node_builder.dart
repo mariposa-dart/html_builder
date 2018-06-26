@@ -72,4 +72,35 @@ class NodeBuilder {
 
   NodeBuilder removeAttribute(String name) =>
       changeAttributesMapped((map) => map..remove(name));
+
+  NodeBuilder setId(String id) => setAttribute('id', id);
+
+  NodeBuilder setClassName(String className) =>
+      setAttribute('class', className);
+
+  NodeBuilder setClasses(Iterable<String> classes) =>
+      setClassName(classes.join(' '));
+
+  NodeBuilder setClassesMapped(Iterable<String> Function(List<String>) f) {
+    var clazz = attributes['class'];
+    var classes = <String>[];
+
+    if (clazz is String)
+      classes.addAll(clazz.split(' '));
+    else if (clazz is Iterable) classes.addAll(clazz.map((s) => s.toString()));
+
+    return setClasses(f(classes));
+  }
+
+  NodeBuilder addClass(String className) => setClassesMapped(
+      (classes) => classes.contains(className) ? classes : classes
+        ..add(className));
+
+  NodeBuilder removeClass(String className) =>
+      setClassesMapped((classes) => classes..remove(className));
+
+  NodeBuilder toggleClass(String className) =>
+      setClassesMapped((classes) => classes.contains(className)
+          ? (classes..remove(className))
+          : (classes..add(className)));
 }
