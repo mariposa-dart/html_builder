@@ -1,136 +1,155 @@
+import 'package:collection/collection.dart';
+import 'component.dart';
+import 'element.dart';
+import 'dom_builder.dart';
 import 'node.dart';
+import 'render_tree.dart';
 
-/// An object that can render a DOM tree into another representation, i.e. a `String`.
 abstract class Renderer<T> {
-  /// Renders a DOM tree into another representation.
-  T render(Node rootNode);
-}
+  final DomBuilder<T> domBuilder;
+  final Node root;
+  RenderTree<T> _current;
 
-/// Renders a DOM tree into a HTML string.
-abstract class StringRenderer implements Renderer<String> {
-  /// Initializes a new [StringRenderer].
-  ///
-  /// If [html5] is not `false` (default: `true`), then self-closing elements will be rendered with a slash before the last angle bracket, ex. `<br />`.
-  /// If [pretty] is `true` (default), then [whitespace] (default: `'  '`) will be inserted between nodes.
-  /// You can also provide a [doctype] (default: `html`).
-  factory StringRenderer(
-      {bool html5: true,
-        bool pretty: true,
-        String doctype: 'html',
-        String whitespace: '  '}) =>
-      pretty == true
-          ? new _PrettyStringRendererImpl(
-          html5: html5 != false,
-          doctype: doctype,
-          whitespace: whitespace ?? '  ')
-          : new _StringRendererImpl(html5: html5 != false, doctype: doctype);
-}
+  Renderer(this.domBuilder, this.root);
 
-class _StringRendererImpl implements StringRenderer {
-  final String doctype;
-  final bool html5;
+  void apply(RenderTree<T> rendered);
 
-  _StringRendererImpl({this.html5, this.doctype});
+  void Function() render() {
+    apply(_current = renderNode(root));
+    return _rerender;
+  }
 
-  void _renderInto(Node node, StringBuffer buf) {
-    if (node is TextNode) {
-      buf.write(node.text);
+  void _rerender() {
+    var newRoot = renderNode(root);
+    _current = diff(_current, newRoot);
+  }
+
+  RenderTree<T> renderNode(Node node) {
+    if (node is Element) {
+      return ElementRenderTree(node)
+        ..children.addAll(node.children.map(renderNode));
+    } else if (node is Component) {
+      return ComponentRenderTree(node, renderNode(node.render()));
     } else {
-      buf.write('<${node.tagName}');
-
-      node.attributes.forEach((k, v) {
-        if (v == true) {
-          buf.write(' $k');
-        } else if (v == false || v == null) {
-          // Ignore
-        } else if (v is Iterable) {
-          var val = v.join(' ').replaceAll('"', '\\"');
-          buf.write(' $k="$val"');
-        } else if (v is Map) {
-          var val = v.keys
-              .fold<String>('', (out, k) => out += '$k: ${v[k]};')
-              .replaceAll('"', '\\"');
-          buf.write(' $k="$val"');
-        } else {
-          var val = v.toString().replaceAll('"', '\\"');
-          buf.write(' $k="$val"');
-        }
-      });
-
-      if (node is SelfClosingNode) {
-        buf.write((html5 != false) ? '>' : '/>');
-      } else {
-        buf.write('>');
-        node.children.forEach((child) => _renderInto(child, buf));
-        buf.write('</${node.tagName}>');
-      }
+      throw ArgumentError.value(
+          node, 'node', 'must be an Element or Component');
     }
   }
 
-  @override
-  String render(Node rootNode) {
-    var buf = new StringBuffer();
-    if (doctype?.isNotEmpty == true) buf.write('<!DOCTYPE $doctype>');
-    _renderInto(rootNode, buf);
-    return buf.toString();
-  }
-}
+  RenderTree<T> diff(RenderTree<T> oldTree, RenderTree<T> newTree) {
+    // Four possible cases:
+    // * old is Component, new is Component
+    // * old is Component, new is Element
+    // * old is Element, new is Element
+    // * old is Element, new is Component
 
-class _PrettyStringRendererImpl implements StringRenderer {
-  final bool html5;
-  final String doctype, whitespace;
-
-  _PrettyStringRendererImpl({this.html5, this.whitespace, this.doctype});
-
-  void _applyTabs(int tabs, StringBuffer buf) {
-    for (int i = 0; i < tabs; i++) buf.write(whitespace ?? '  ');
-  }
-
-  void _renderInto(int tabs, Node node, StringBuffer buf) {
-    if (tabs > 0) buf.writeln();
-    _applyTabs(tabs, buf);
-
-    if (node is TextNode) {
-      buf.write(node.text);
-    } else {
-      buf.write('<${node.tagName}');
-
-      node.attributes.forEach((k, v) {
-        if (v == true) {
-          buf.write(' $k');
-        } else if (v == false || v == null) {
-          // Ignore
-        } else if (v is Iterable) {
-          var val = v.join(' ').replaceAll('"', '\\"');
-          buf.write(' $k="$val"');
-        } else if (v is Map) {
-          var val = v.keys
-              .fold<String>('', (out, k) => out += '$k: ${v[k]};')
-              .replaceAll('"', '\\"');
-          buf.write(' $k="$val"');
-        } else {
-          var val = v.toString().replaceAll('"', '\\"');
-          buf.write(' $k="$val"');
-        }
-      });
-
-      if (node is SelfClosingNode) {
-        buf.write((html5 != false) ? '>' : '/>');
+    if (oldTree is ComponentRenderTree<T>) {
+      if (newTree is ComponentRenderTree<T>) {
+        return diffTwoComponents(oldTree, newTree);
+      } else if (newTree is ElementRenderTree<T>) {
+        return diffComponentAndElement(oldTree, newTree);
       } else {
-        buf.write('>');
-        node.children.forEach((child) => _renderInto(tabs + 1, child, buf));
-        buf.writeln();
-        _applyTabs(tabs, buf);
-        buf.write('</${node.tagName}>');
+        throw ArgumentError.value(oldTree, 'newTree',
+            'must be an ElementRenderTree or ComponentRenderTree');
       }
+    } else if (oldTree is ElementRenderTree<T>) {
+      if (newTree is ElementRenderTree<T>) {
+        return diffTwoElements(oldTree, newTree);
+      } else if (newTree is ComponentRenderTree<T>) {
+        return diffElementAndComponent(oldTree, newTree);
+      } else {
+        throw ArgumentError.value(oldTree, 'newTree',
+            'must be an ElementRenderTree or ComponentRenderTree');
+      }
+    } else {
+      throw ArgumentError.value(oldTree, 'oldTree',
+          'must be an ElementRenderTree or ComponentRenderTree');
     }
   }
 
-  @override
-  String render(Node rootNode) {
-    var buf = new StringBuffer();
-    if (doctype?.isNotEmpty == true) buf.writeln('<!DOCTYPE $doctype>');
-    _renderInto(0, rootNode, buf);
-    return buf.toString();
+  RenderTree<T> diffTwoComponents(
+      ComponentRenderTree<T> a, ComponentRenderTree<T> b) {
+    // If they are not the same type, OR the keys are different,
+    // destroy the old one, and return the new, after initialization.
+    if ((a.component.runtimeType != b.component.runtimeType) ||
+        (a.component.key != b.component.key)) {
+      destroyNode(a);
+      initializeNode(b);
+      return b;
+    }
+
+    // Otherwise, return the same node, and diff its rendered node.
+    return a.withRendered(diff(a.rendered, b.rendered));
+  }
+
+  RenderTree<T> diffComponentAndElement(
+      ComponentRenderTree<T> a, ElementRenderTree<T> b) {
+    // Always destroy the component. Return the new node.
+    destroyNode(a);
+    initializeNode(b);
+    return b;
+  }
+
+  RenderTree<T> diffTwoElements(
+      ElementRenderTree<T> a, ElementRenderTree<T> b) {
+    // If the tag name or key has changed, destroy the old node.
+    if ((a.element.tagName != b.element.tagName) ||
+        (a.element.key != b.element.key)) {
+      destroyNode(a);
+      initializeNode(b);
+      return b;
+    }
+
+    // TODO: Otherwise, diff the children.
+    var preserve = b.children;
+    // var preserve = List<RenderTree<T>>.filled(b.children.length, null);
+
+    // for (int i = 0; i < b.children.length && i < a.children.length; i++) {
+    //   var oldChild = a.children[i];
+    // }
+
+    // preserve.removeWhere((t) => t == null);
+
+    // for (int i = 0; i < b.children.length; i++) {
+    //   preserve[i] = b.children[i];
+    // }
+
+    var newElement = Element(b.element.tagName,
+        key: b.element.key,
+        props: b.element.props,
+        children: preserve.map((t) => t.node));
+    return ElementRenderTree(newElement)..children.addAll(preserve);
+  }
+
+  RenderTree<T> diffElementAndComponent(
+      ElementRenderTree<T> a, ComponentRenderTree<T> b) {
+    // Always destroy the element. Return the new node.
+    destroyNode(a);
+    initializeNode(b);
+    return b;
+  }
+
+  void destroyNode(RenderTree tree) {
+    if (tree is ComponentRenderTree) {
+      tree.component.deactivate();
+      destroyNode(tree.rendered);
+    } else if (tree is ElementRenderTree) {
+      tree.children.forEach(destroyNode);
+    } else {
+      throw ArgumentError.value(
+          tree, 'tree', 'must be an ElementRenderTree or ComponentRenderTree');
+    }
+  }
+
+  void initializeNode(RenderTree tree) {
+    if (tree is ComponentRenderTree) {
+      tree.component.initialize();
+      initializeNode(tree.rendered);
+    } else if (tree is ElementRenderTree) {
+      tree.children.forEach(initializeNode);
+    } else {
+      throw ArgumentError.value(
+          tree, 'tree', 'must be an ElementRenderTree or ComponentRenderTree');
+    }
   }
 }

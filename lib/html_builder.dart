@@ -1,4 +1,4 @@
-export 'src/mutations.dart';
+export 'src/component.dart';
+export 'src/dom_builder.dart';
+export 'src/element.dart';
 export 'src/node.dart';
-export 'src/node_builder.dart';
-export 'src/renderer.dart';
