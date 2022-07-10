@@ -22,13 +22,13 @@ abstract class StringRenderer implements Renderer<String> {
           ? new _PrettyStringRendererImpl(
           html5: html5 != false,
           doctype: doctype,
-          whitespace: whitespace ?? '  ')
+          whitespace: whitespace)
           : new _StringRendererImpl(html5: html5 != false, doctype: doctype);
 }
 
 class _StringRendererImpl implements StringRenderer {
-  final String doctype;
-  final bool html5;
+  final String? doctype;
+  final bool? html5;
 
   _StringRendererImpl({this.html5, this.doctype});
 
@@ -77,8 +77,8 @@ class _StringRendererImpl implements StringRenderer {
 }
 
 class _PrettyStringRendererImpl implements StringRenderer {
-  final bool html5;
-  final String doctype, whitespace;
+  final bool? html5;
+  final String? doctype, whitespace;
 
   _PrettyStringRendererImpl({this.html5, this.whitespace, this.doctype});
 

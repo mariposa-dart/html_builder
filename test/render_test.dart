@@ -26,9 +26,9 @@ main() {
     print(rendered);
 
     var $parsed = html5.parse(rendered);
-    var $title = $parsed.querySelector('title');
+    var $title = $parsed.querySelector('title')!;
     expect($title.text.trim(), 'Hello, world!');
-    var $h1 = $parsed.querySelector('h1');
+    var $h1 = $parsed.querySelector('h1')!;
     expect($h1.text.trim(), 'Hello, world!');
   });
 }

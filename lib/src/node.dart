@@ -15,12 +15,12 @@ class Node {
   Node(this.tagName,
       [Map<String, dynamic> attributes = const {},
       Iterable<Node> children = const []]) {
-    this..attributes.addAll(attributes ?? {})..children.addAll(children ?? []);
+    this..attributes.addAll(attributes)..children.addAll(children);
   }
 
   Node._selfClosing(this.tagName,
       [Map<String, dynamic> attributes = const {}]) {
-    this..attributes.addAll(attributes ?? {});
+    this..attributes.addAll(attributes);
   }
 
   @override
