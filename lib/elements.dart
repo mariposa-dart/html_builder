@@ -4,13 +4,13 @@ library html_builder.elements;
 import 'html_builder.dart';
 export 'html_builder.dart';
 
-Map<String, dynamic> _apply(Iterable<Map<String, dynamic>> props,
-    [Map<String, dynamic> attrs]) {
+Map<String, dynamic> _apply(Iterable<Map<String, dynamic>?> props,
+    [Map<String, dynamic>? attrs]) {
   var map = {};
   attrs?.forEach((k, attr) {
-    if (attr is String && attr?.isNotEmpty == true) {
+    if (attr is String && attr.isNotEmpty == true) {
       map[k] = attr;
-    } else if (attr is Iterable && attr?.isNotEmpty == true) {
+    } else if (attr is Iterable && attr.isNotEmpty == true) {
       map[k] = attr.toList();
     } else if (attr != null) {
       map[k] = attr;
@@ -27,16 +27,16 @@ Map<String, dynamic> _apply(Iterable<Map<String, dynamic>> props,
 Node text(String text) => new TextNode(text);
 
 Node a(
-        {String href,
-        String rel,
-        String target,
-        String id,
+        {String? href,
+        String? rel,
+        String? target,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'a',
         _apply([
@@ -53,14 +53,14 @@ Node a(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node abbr(
-        {String title,
-        String id,
+        {String? title,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'addr',
         _apply([p, props],
@@ -68,31 +68,31 @@ Node abbr(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node address(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'address',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node area(
-        {String alt,
-        Iterable<num> coordinates,
-        String download,
-        String href,
-        String hreflang,
-        String media,
-        String nohref,
-        String rel,
-        String shape,
-        String target,
-        String type,
-        String id,
+        {String? alt,
+        Iterable<num>? coordinates,
+        String? download,
+        String? href,
+        String? hreflang,
+        String? media,
+        String? nohref,
+        String? rel,
+        String? shape,
+        String? target,
+        String? type,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -124,38 +124,38 @@ Node article(
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('article', _apply([p, props], {'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node aside(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'aside',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node audio(
-        {bool autoplay,
-        bool controls,
-        bool loop,
-        bool muted,
-        String preload,
-        String src,
-        String id,
+        {bool? autoplay,
+        bool? controls,
+        bool? loop,
+        bool? muted,
+        String? preload,
+        String? src,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'audio',
         _apply([
@@ -175,20 +175,20 @@ Node audio(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node b(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('b', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node base(
-        {String href,
-        String target,
-        String id,
+        {String? href,
+        String? target,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -207,25 +207,25 @@ Node base(
         }));
 
 Node bdi(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('bdi', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node bdo(
-        {String dir,
-        String id,
+        {String? dir,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'bdo',
         _apply([p, props],
@@ -233,14 +233,14 @@ Node bdo(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node blockquote(
-        {String cite,
-        String id,
+        {String? cite,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'blockquote',
         _apply([p, props],
@@ -248,13 +248,13 @@ Node blockquote(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node body(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'body',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
@@ -263,24 +263,24 @@ Node body(
 Node br() => new SelfClosingNode('br');
 
 Node button(
-        {bool autofocus,
-        bool disabled,
+        {bool? autofocus,
+        bool? disabled,
         form,
-        String formaction,
-        String formenctype,
-        String formmethod,
-        bool formnovalidate,
-        String formtarget,
-        String name,
-        String type,
-        String value,
-        String id,
+        String? formaction,
+        String? formenctype,
+        String? formmethod,
+        bool? formnovalidate,
+        String? formtarget,
+        String? name,
+        String? type,
+        String? value,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'button',
         _apply([
@@ -305,15 +305,15 @@ Node button(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node canvas(
-        {num height,
-        num width,
-        String id,
+        {num? height,
+        num? width,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'canvas',
         _apply([
@@ -329,53 +329,53 @@ Node canvas(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node cite(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'cite',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node caption(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'caption',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node code(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'code',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node col(
-        {num span,
-        String id,
+        {num? span,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'col',
         _apply([p, props],
@@ -383,14 +383,14 @@ Node col(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node colgroup(
-        {num span,
-        String id,
+        {num? span,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'colgroup',
         _apply([p, props],
@@ -398,39 +398,39 @@ Node colgroup(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node datalist(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'datalist',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node dd(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('dd', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node del(
-        {String cite,
-        String datetime,
-        String id,
+        {String? cite,
+        String? datetime,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'del',
         _apply([
@@ -446,14 +446,14 @@ Node del(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node details(
-        {bool open,
-        String id,
+        {bool? open,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'details',
         _apply([p, props],
@@ -461,14 +461,14 @@ Node details(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node dfn(
-        {String title,
-        String id,
+        {String? title,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'dfn',
         _apply([p, props],
@@ -476,14 +476,14 @@ Node dfn(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node dialog(
-        {bool open,
-        String id,
+        {bool? open,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'dialog',
         _apply([p, props],
@@ -491,55 +491,55 @@ Node dialog(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node div(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('div', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node dl(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('dl', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node dt(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('dt', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node em(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('em', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node embed(
-        {num height,
-        String src,
-        String type,
-        num width,
-        String id,
+        {num? height,
+        String? src,
+        String? type,
+        num? width,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -560,16 +560,16 @@ Node embed(
         }));
 
 Node fieldset(
-        {bool disabled,
-        String form,
-        String name,
-        String id,
+        {bool? disabled,
+        String? form,
+        String? name,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'fieldset',
         _apply([
@@ -586,61 +586,61 @@ Node fieldset(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node figcaption(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'figcaption',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node figure(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'figure',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node footer(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'footer',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node form(
-        {String accept,
-        String acceptCharset,
-        String action,
-        bool autocomplete,
-        String enctype,
-        String method,
-        String name,
-        bool novalidate,
-        String target,
-        String id,
+        {String? accept,
+        String? acceptCharset,
+        String? action,
+        bool? autocomplete,
+        String? enctype,
+        String? method,
+        String? name,
+        bool? novalidate,
+        String? target,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'form',
         _apply([
@@ -664,91 +664,91 @@ Node form(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node h1(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('h1', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node h2(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('h2', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 Node h3(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('h3', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node h4(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('h4', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node h5(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('h5', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node h6(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('h6', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node head(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'head',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node header(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'header',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
@@ -757,16 +757,16 @@ Node header(
 Node hr() => new SelfClosingNode('hr');
 
 Node html(
-        {String manifest,
-        String xmlns,
-        String lang,
-        String id,
+        {String? manifest,
+        String? xmlns,
+        String? lang,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'html',
         _apply([
@@ -783,24 +783,24 @@ Node html(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node i(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('i', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node iframe(
-        {num height,
-        String name,
+        {num? height,
+        String? name,
         sandbox,
-        String src,
-        String srcdoc,
-        num width,
-        String id,
+        String? src,
+        String? srcdoc,
+        num? width,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -823,17 +823,17 @@ Node iframe(
         }));
 
 Node img(
-        {String alt,
-        String crossorigin,
-        num height,
-        String ismap,
-        String longdesc,
+        {String? alt,
+        String? crossorigin,
+        num? height,
+        String? ismap,
+        String? longdesc,
         sizes,
-        String src,
-        String srcset,
-        String usemap,
-        num width,
-        String id,
+        String? src,
+        String? srcset,
+        String? usemap,
+        num? width,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -860,37 +860,37 @@ Node img(
         }));
 
 Node input(
-        {String accept,
-        String alt,
-        bool autocomplete,
-        bool autofocus,
-        bool checked,
-        String dirname,
-        bool disabled,
-        String form,
-        String formaction,
-        String formenctype,
-        String method,
-        String formnovalidate,
-        String formtarget,
-        num height,
-        String list,
+        {String? accept,
+        String? alt,
+        bool? autocomplete,
+        bool? autofocus,
+        bool? checked,
+        String? dirname,
+        bool? disabled,
+        String? form,
+        String? formaction,
+        String? formenctype,
+        String? method,
+        String? formnovalidate,
+        String? formtarget,
+        num? height,
+        String? list,
         max,
-        num maxlength,
+        num? maxlength,
         min,
-        bool multiple,
-        String name,
-        String pattern,
-        String placeholder,
-        bool readonly,
-        bool required,
-        num size,
-        String src,
-        num step,
-        String type,
-        String value,
-        num width,
-        String id,
+        bool? multiple,
+        String? name,
+        String? pattern,
+        String? placeholder,
+        bool? readonly,
+        bool? required,
+        num? size,
+        String? src,
+        num? step,
+        String? type,
+        String? value,
+        num? width,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -938,15 +938,15 @@ Node input(
         }));
 
 Node ins(
-        {String cite,
-        String datetime,
-        String id,
+        {String? cite,
+        String? datetime,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'ins',
         _apply([
@@ -962,30 +962,30 @@ Node ins(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node kbd(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('kbd', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node keygen(
-        {bool autofocus,
-        String challenge,
-        bool disabled,
-        String from,
-        String keytype,
-        String name,
-        String id,
+        {bool? autofocus,
+        String? challenge,
+        bool? disabled,
+        String? from,
+        String? keytype,
+        String? name,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'keygen',
         _apply([
@@ -1005,15 +1005,15 @@ Node keygen(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node label(
-        {String for_,
-        String form,
-        String id,
+        {String? for_,
+        String? form,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'label',
         _apply([
@@ -1029,27 +1029,27 @@ Node label(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node legend(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'legend',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node li(
-        {num value,
-        String id,
+        {num? value,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'li',
         _apply([p, props],
@@ -1057,15 +1057,15 @@ Node li(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node link(
-        {String crossorigin,
-        String href,
-        String hreflang,
-        String media,
-        String rel,
+        {String? crossorigin,
+        String? href,
+        String? hreflang,
+        String? media,
+        String? rel,
         sizes,
-        String target,
-        String type,
-        String id,
+        String? target,
+        String? type,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -1090,27 +1090,27 @@ Node link(
         }));
 
 Node main(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'main',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node map(
-        {String name,
-        String id,
+        {String? name,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'map',
         _apply([p, props],
@@ -1118,28 +1118,28 @@ Node map(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node mark(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'mark',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node menu(
-        {String label,
-        String type,
-        String id,
+        {String? label,
+        String? type,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'menu',
         _apply([
@@ -1155,21 +1155,21 @@ Node menu(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node menuitem(
-        {bool checked,
+        {bool? checked,
         command,
-        bool default_,
-        bool disabled,
-        String icon,
-        String label,
-        String radiogroup,
-        String type,
-        String id,
+        bool? default_,
+        bool? disabled,
+        String? icon,
+        String? label,
+        String? radiogroup,
+        String? type,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'menuitem',
         _apply([
@@ -1191,11 +1191,11 @@ Node menuitem(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node meta(
-        {String charset,
-        String content,
-        String httpEquiv,
-        String name,
-        String id,
+        {String? charset,
+        String? content,
+        String? httpEquiv,
+        String? name,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -1216,44 +1216,44 @@ Node meta(
         }));
 
 Node nav(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('nav', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node noscript(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'noscript',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node object(
-        {String data,
-        String form,
-        num height,
-        String name,
-        String type,
-        String usemap,
-        num width,
-        String id,
+        {String? data,
+        String? form,
+        num? height,
+        String? name,
+        String? type,
+        String? usemap,
+        num? width,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'object',
         _apply([
@@ -1274,16 +1274,16 @@ Node object(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node ol(
-        {bool reversed,
-        num start,
-        String type,
-        String id,
+        {bool? reversed,
+        num? start,
+        String? type,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'ol',
         _apply([
@@ -1300,15 +1300,15 @@ Node ol(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node optgroup(
-        {bool disabled,
-        String label,
-        String id,
+        {bool? disabled,
+        String? label,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'optgroup',
         _apply([
@@ -1324,17 +1324,17 @@ Node optgroup(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node option(
-        {bool disabled,
-        String label,
-        bool selected,
-        String value,
-        String id,
+        {bool? disabled,
+        String? label,
+        bool? selected,
+        String? value,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'option',
         _apply([
@@ -1352,16 +1352,16 @@ Node option(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node output(
-        {String for_,
-        String form,
-        String name,
-        String id,
+        {String? for_,
+        String? form,
+        String? name,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'output',
         _apply([
@@ -1378,20 +1378,20 @@ Node output(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node p(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('p', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node param(
-        {String name,
+        {String? name,
         value,
-        String id,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -1410,39 +1410,39 @@ Node param(
         }));
 
 Node picture(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'picture',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node pre(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('pre', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node progress(
-        {num max,
-        num value,
-        String id,
+        {num? max,
+        num? value,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'progress',
         _apply([
@@ -1458,14 +1458,14 @@ Node progress(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node q(
-        {String cite,
-        String id,
+        {String? cite,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'q',
         _apply([p, props],
@@ -1473,77 +1473,77 @@ Node q(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node rp(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('rp', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node rt(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('rt', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node ruby(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'ruby',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node s(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('s', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node samp(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'samp',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node script(
-        {bool async,
-        String charset,
-        bool defer,
-        String src,
-        String type,
-        String id,
+        {bool? async,
+        String? charset,
+        bool? defer,
+        String? src,
+        String? type,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'script',
         _apply([
@@ -1562,32 +1562,32 @@ Node script(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node section(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'section',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node select(
-        {bool autofocus,
-        bool disabled,
-        String form,
-        bool multiple,
-        bool required,
-        num size,
-        String id,
+        {bool? autofocus,
+        bool? disabled,
+        String? form,
+        bool? multiple,
+        bool? required,
+        num? size,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'select',
         _apply([
@@ -1607,25 +1607,25 @@ Node select(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node small(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'small',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node source(
-        {String src,
-        String srcset,
-        String media,
+        {String? src,
+        String? srcset,
+        String? media,
         sizes,
-        String type,
-        String id,
+        String? type,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -1647,40 +1647,40 @@ Node source(
         }));
 
 Node span(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'span',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node strong(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'strong',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node style(
-        {String media,
-        bool scoped,
-        String type,
-        String id,
+        {String? media,
+        bool? scoped,
+        String? type,
+        String? id,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'style',
         _apply([p, props],
@@ -1688,49 +1688,49 @@ Node style(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node sub(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('sub', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node summary(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'summary',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node sup(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('sup', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node table(
-        {bool sortable,
-        String id,
+        {bool? sortable,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'table',
         _apply([
@@ -1745,29 +1745,29 @@ Node table(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node tbody(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'tbody',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node td(
-        {num colspan,
+        {num? colspan,
         headers,
-        num rowspan,
-        String id,
+        num? rowspan,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'td',
         _apply([
@@ -1784,25 +1784,25 @@ Node td(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node textarea(
-        {bool autofocus,
-        num cols,
-        String dirname,
-        bool disabled,
-        String form,
-        num maxlength,
-        String name,
-        String placeholder,
-        bool readonly,
-        bool required,
-        num rows,
-        String wrap,
-        String id,
+        {bool? autofocus,
+        num? cols,
+        String? dirname,
+        bool? disabled,
+        String? form,
+        num? maxlength,
+        String? name,
+        String? placeholder,
+        bool? readonly,
+        bool? required,
+        num? rows,
+        String? wrap,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'textarea',
         _apply([
@@ -1828,32 +1828,32 @@ Node textarea(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node tfoot(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'tfoot',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node th(
-        {String abbr,
-        num colspan,
+        {String? abbr,
+        num? colspan,
         headers,
-        num rowspan,
-        String scope,
+        num? rowspan,
+        String? scope,
         sorted,
-        String id,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'th',
         _apply([
@@ -1873,27 +1873,27 @@ Node th(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node thead(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'thead',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node time(
-        {String datetime,
-        String id,
+        {String? datetime,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'time',
         _apply([
@@ -1908,36 +1908,36 @@ Node time(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node title(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'title',
         _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node tr(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('tr', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node track(
-        {bool default_,
-        String kind,
-        String label,
-        String src,
-        String srclang,
-        String id,
+        {bool? default_,
+        String? kind,
+        String? label,
+        String? src,
+        String? srclang,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
@@ -1959,55 +1959,55 @@ Node track(
         }));
 
 Node u(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('u', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node ul(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('ul', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node var_(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('var', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node video(
-        {bool autoplay,
-        bool controls,
-        num height,
-        bool loop,
-        bool muted,
-        String poster,
-        String preload,
-        String src,
-        num width,
-        String id,
+        {bool? autoplay,
+        bool? controls,
+        num? height,
+        bool? loop,
+        bool? muted,
+        String? poster,
+        String? preload,
+        String? src,
+        num? width,
+        String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h(
         'video',
         _apply([
@@ -2030,12 +2030,12 @@ Node video(
         []..addAll(c ?? [])..addAll(children ?? []));
 
 Node wbr(
-        {String id,
+        {String? id,
         className,
         style,
         Map<String, dynamic> p: const {},
         @deprecated Map<String, dynamic> props: const {},
-        Iterable<Node> c: const [],
-        @deprecated Iterable<Node> children: const []}) =>
+        Iterable<Node>? c: const [],
+        @deprecated Iterable<Node>? children: const []}) =>
     h('wbr', _apply([p, props], {'id': id, 'class': className, 'style': style}),
         []..addAll(c ?? [])..addAll(children ?? []));

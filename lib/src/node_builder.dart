@@ -5,7 +5,7 @@ class NodeBuilder {
   final String tagName;
   final Map<String, dynamic> attributes;
   final Iterable<Node> children;
-  Node _existing;
+  Node? _existing;
 
   NodeBuilder(this.tagName,
       {this.attributes: const {}, this.children: const []});
@@ -27,9 +27,9 @@ class NodeBuilder {
 
   /// Produce a modified copy of this builder.
   NodeBuilder change(
-      {String tagName,
-      Map<String, dynamic> attributes,
-      Iterable<Node> children}) {
+      {String? tagName,
+      Map<String, dynamic>? attributes,
+      Iterable<Node>? children}) {
     return new NodeBuilder(tagName ?? this.tagName,
         attributes: attributes ?? this.attributes,
         children: children ?? this.children);
