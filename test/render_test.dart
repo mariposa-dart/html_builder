@@ -1,6 +1,5 @@
 import 'package:html/parser.dart' as html5;
 import 'package:html_builder/elements.dart';
-import 'package:html_builder/html_builder.dart';
 import 'package:test/test.dart';
 
 main() {
