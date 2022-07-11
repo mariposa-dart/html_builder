@@ -1,0 +1,20 @@
+name: check
+
+on:
+  - push
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1.3
+      - name: Install dependencies
+        run: dart pub get
+      - name: dart analyze
+        run: dart analyze --fatal-infos
+      - name: dart format
+        # https://github.com/dart-lang/dart_style/issues/1103
+        # https://github.com/dart-lang/dart_style/issues/864#issuecomment-544628480
+        run: find . -name *.dart -not -name *.g.dart -exec flutter format -o none --set-exit-if-changed {} \;
+      - run: dart test
