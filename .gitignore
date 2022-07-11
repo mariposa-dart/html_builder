@@ -48,8 +48,9 @@ pubspec.lock
 .idea/**/gradle.xml
 .idea/**/libraries
 
-# Mongo Explorer plugin:
+# plugins:
 .idea/**/mongoSettings.xml
+.idea/git_toolbox_prj.xml
 
 ## File-based project format:
 *.iws
