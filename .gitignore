@@ -4,7 +4,7 @@
 .buildlog
 .packages
 .project
-.pub/
+.dart_tool/
 build/
 **/packages/
 
