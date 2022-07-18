@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:collection/collection.dart';
 
 /// Shorthand function to generate a new [Node].
@@ -45,12 +47,19 @@ class SelfClosingNode extends Node {
       : super._selfClosing(tagName, attributes);
 }
 
-/// Represents a text node.
-class TextNode extends Node {
-  final String text;
+/// Represents a node as a string.
+class HtmlNode extends Node {
+  final String innerHtml;
 
-  TextNode(this.text) : super(':text');
+  HtmlNode(this.innerHtml) : super(':text');
 
   @override
-  bool operator ==(other) => other is TextNode && other.text == text;
+  bool operator ==(other) => other is HtmlNode && other.innerHtml == innerHtml;
+}
+
+/// Represents a text node.
+class TextNode extends HtmlNode {
+  final String text;
+
+  TextNode(this.text) : super(const HtmlEscape().convert(text)) {}
 }

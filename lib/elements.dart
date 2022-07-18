@@ -24,6 +24,8 @@ Map<String, dynamic> _apply(Iterable<Map<String, dynamic>?> props,
   return map.cast<String, dynamic>();
 }
 
+Node innerHtml(String text) => new HtmlNode(text);
+
 Node text(String text) => new TextNode(text);
 
 Node a(

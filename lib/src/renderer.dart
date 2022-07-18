@@ -33,8 +33,8 @@ class _StringRendererImpl implements StringRenderer {
   _StringRendererImpl({this.html5, this.doctype});
 
   void _renderInto(Node node, StringBuffer buf) {
-    if (node is TextNode) {
-      buf.write(node.text);
+    if (node is HtmlNode) {
+      buf.write(node.innerHtml);
     } else {
       buf.write('<${node.tagName}');
 
@@ -90,8 +90,8 @@ class _PrettyStringRendererImpl implements StringRenderer {
     if (tabs > 0) buf.writeln();
     _applyTabs(tabs, buf);
 
-    if (node is TextNode) {
-      buf.write(node.text);
+    if (node is HtmlNode) {
+      buf.write(node.innerHtml);
     } else {
       buf.write('<${node.tagName}');
 
